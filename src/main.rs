@@ -1,4 +1,3 @@
-// src/main.rs
 #![feature(iter_intersperse)]
 
 use yew::prelude::*;
