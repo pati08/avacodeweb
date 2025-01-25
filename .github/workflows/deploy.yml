@@ -13,21 +13,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Rust
+      - name: Set up Rust (Nightly)
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: stable
+          toolchain: nightly
           override: true
           components: clippy
 
       - name: Add wasm32 target
         run: rustup target add wasm32-unknown-unknown
 
-      - name: Install Trunk
-        run: cargo install trunk
+      - name: Install cargo-binstall
+        run: |
+          curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 
-      - name: Install wasm-bindgen
-        run: cargo install wasm-bindgen-cli
+      - name: Install Trunk and wasm-bindgen-cli using cargo-binstall
+        run: |
+          cargo binstall trunk --no-confirm
+          cargo binstall wasm-bindgen-cli --no-confirm
 
       - name: Run cargo clippy
         run: cargo clippy -- -D warnings
