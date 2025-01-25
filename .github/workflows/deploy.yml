@@ -37,6 +37,13 @@ jobs:
 
       - name: Build with Trunk
         run: trunk build --release
+        
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './public'
   deploy:
     runs-on: ubuntu-latest
     environment:
@@ -44,15 +51,6 @@ jobs:
       url: ${{steps.deployment.outputs.page_url}}
     needs: build
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload Artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # upload entire directory
-          path: './public'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
