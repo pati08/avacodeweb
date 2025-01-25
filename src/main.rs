@@ -100,7 +100,7 @@ fn App() -> Html {
                         type="text"
                         value={(*input_value).clone()}
                         oninput={on_input}
-                        placeholder="Enter the challenge text"
+                        placeholder="Encode the text"
                         class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                     />
                     <button
