@@ -1,10 +1,11 @@
 # shuttle-template-yew .gitignore definitions
 
-# Visual Studio Code Settings
-.vscode
-
 # Build artifacts
 target
 
 # Site
 public
+/target
+
+# direnv
+.envrc
