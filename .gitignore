@@ -8,4 +8,4 @@ public
 /target
 
 # direnv
-.envrc
+.direnv
